@@ -17,23 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Ngp-ch-aZH">
-                                <rect key="frame" x="123" y="269" width="128" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vh3-qO-oBB">
+                                <rect key="frame" x="172" y="318" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="GO5-qw-qnr"/>
-                                    <constraint firstAttribute="width" constant="128" id="peY-XO-bEp"/>
+                                    <constraint firstAttribute="height" constant="30" id="DBr-wS-w4p"/>
+                                    <constraint firstAttribute="width" constant="30" id="fib-fJ-Ilz"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" image="Image"/>
+                                <connections>
+                                    <action selector="touch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Giz-Da-PXV"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.88280254602432251" green="0.57975441217422485" blue="0.053642861545085907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ngp-ch-aZH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Kci-8A-Wna"/>
-                            <constraint firstItem="Ngp-ch-aZH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PM7-UV-eMR"/>
+                            <constraint firstItem="Vh3-qO-oBB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="159-T4-hak"/>
+                            <constraint firstItem="Vh3-qO-oBB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eyk-DT-OOq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="Ngp-ch-aZH" id="tb5-IC-ZiR"/>
+                        <outlet property="imageView" destination="Vh3-qO-oBB" id="daJ-hY-dM7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -42,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="256" height="256"/>
+        <image name="Image" width="25" height="25"/>
     </resources>
 </document>

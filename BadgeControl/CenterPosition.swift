@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Position {
+public enum CenterPosition {
   
   case upperLeftCorner
   case upperRightCorner

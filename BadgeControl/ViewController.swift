@@ -9,14 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+
+  @IBOutlet weak var imageView: UIButton!
   
-  @IBOutlet weak var imageView: UIImageView!
+  var counter = 1
+  
+  var badgeController: BadgeController?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let badge = BadgeImageView(height: 200, center: CGPoint(x: 100, y: 100), text: "1", badgeColor: UIColor.red, textColor: UIColor.white)
-    view.addSubview(badge)
+    badgeController = BadgeController(for: imageView, badgeSizeResizingRatio: 1.5)
     
     //    ...
     //    contr.increment(animated: true)
@@ -26,6 +29,11 @@ class ViewController: UIViewController {
     //    contr.badge.backgroundColor = UIColor.blue
     //    contr.badge.textColor = ...
     //    ...
+  }
+  
+  @IBAction func touch(_ sender: UIButton) {
+    badgeController?.add(with: "\(counter)")
+    counter += 1
   }
 }
 

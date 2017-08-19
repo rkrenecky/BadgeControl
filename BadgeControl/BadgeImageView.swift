@@ -1,19 +1,19 @@
 import UIKit
 
-class BadgeImageView: UIImageView {
-  let text: String
-  let badgeColor: UIColor
-  let textColor: UIColor
+internal class BadgeImageView: UIImageView {
+  private let text: String
+  private let badgeBackgroundColor: UIColor
+  private let badgeTextColor: UIColor
   
-  init(height: Int, center: CGPoint, text: String, badgeColor: UIColor, textColor: UIColor) {
+  init(height: Int, center: CGPoint, text: String, badgeBackgroundColor: UIColor, badgeTextColor: UIColor) {
     self.text = text
-    self.badgeColor = badgeColor
-    self.textColor = textColor
+    self.badgeBackgroundColor = badgeBackgroundColor
+    self.badgeTextColor = badgeTextColor
     
     super.init(image: drawBadge(frame: CGRect(x: 0, y: 0, width: calculateWidth(from: height, and: text), height: height),
                                 with: text,
-                                badgeColor: badgeColor,
-                                textColor: textColor))
+                                badgeBackgroundColor: badgeBackgroundColor,
+                                badgeTextColor: badgeTextColor))
     super.center = center
   }
   
@@ -27,8 +27,8 @@ class BadgeImageView: UIImageView {
   
   private func drawBadge(frame: CGRect = CGRect(x: 0, y: 0, width: 30, height: 30),
                          with text: String,
-                         badgeColor: UIColor,
-                         textColor: UIColor) -> UIImage {
+                         badgeBackgroundColor: UIColor,
+                         badgeTextColor: UIColor) -> UIImage {
     
     let height = frame.height
     let ovalWidth = height
@@ -54,7 +54,7 @@ class BadgeImageView: UIImageView {
     rightHemispherePath.addLine(to: CGPoint(x: rightHemisphereRect.midX, y: rightHemisphereRect.midY))
     rightHemispherePath.close()
     
-    badgeColor.setFill()
+    badgeBackgroundColor.setFill()
     rightHemispherePath.fill()
     
     context.restoreGState()
@@ -67,13 +67,13 @@ class BadgeImageView: UIImageView {
     leftHemispherePath.addLine(to: CGPoint(x: leftHemisphereRect.midX, y: leftHemisphereRect.midY))
     leftHemispherePath.close()
     
-    badgeColor.setFill()
+    badgeBackgroundColor.setFill()
     leftHemispherePath.fill()
     
     
     //// Rectangle Drawing
     let rectanglePath = UIBezierPath(rect: CGRect(x: ovalWidth / 2, y: frame.minY, width: rectangleWidth, height: height))
-    badgeColor.setFill()
+    badgeBackgroundColor.setFill()
     rectanglePath.fill()
     
     //// Text Drawing
@@ -85,7 +85,7 @@ class BadgeImageView: UIImageView {
     textStyle.alignment = .center
     let textFontAttributes = [
       .font: UIFont.systemFont(ofSize: height * 23 / 32),
-      .foregroundColor: textColor,
+      .foregroundColor: badgeTextColor,
       .paragraphStyle: textStyle,
       ] as [NSAttributedStringKey: Any]
     
