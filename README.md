@@ -13,29 +13,31 @@
 * Add [BadgeController.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeController.swift), [BadgeImageView.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeImageView.swift) and [CenterPosition.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/CenterPosition.swift) to your project.
 
 ## Usage
-Add `import BadgeControl` to your source code (unless you used the file setup method).
+Add `import BadgeControl` to your source code (unless you used the file setup method). <br><br>
+Simply attach BadgeController to your UIView (or its subclass).
 
 ~~~swift
 let badge = BadgeController(for: myUIView)
 ~~~
-Simply attach BadgeController to your UIView (or its subclass).
 
+Add a text to your badge and present it with animation.
 ~~~swift
 badge.addOrReplaceCurrent(with text: "1", animated: true)
 ~~~
-Add a text to your badge and present it with animation.
+
+Remove badge from its view.
 
 ~~~swift
 badge.remove()
 ~~~
-Remove badge from its view.
+
+Simply increment or decrement the value on your badge (if it is numeric) and present it with animation.
 
 ~~~swift
 badge.increment(animated: true)
 badge.decrement(animated: true)
 ~~~
 
-Simply increment or decrement the value on your badge (if it is numeric) and present it with animation.
 
 ## Customization
 You can customize badge's text font, size (with ratio), center position, background color, text color and animation.
