@@ -1,6 +1,6 @@
 //
-//  Corner.swift
-//  badge
+//  CenterPosition.swift
+//  BadgeControl
 //
 //  Created by Robin Krenecky on 19.08.17.
 //  Copyright © 2017 Robin Krenecky. All rights reserved.
@@ -8,6 +8,8 @@
 
 import UIKit
 
+/*
+ */
 public enum CenterPosition {
   
   case upperLeftCorner
@@ -16,7 +18,9 @@ public enum CenterPosition {
   case lowerRightCorner
   case custom(x: Double, y: Double)
   
-  func getCenterPoint(in view: UIView) -> CGPoint {
+  /*
+   */
+  public func getCenterPoint(in view: UIView) -> CGPoint {
     switch self {
     case .upperLeftCorner:
       return CGPoint(x: 0, y: 0)

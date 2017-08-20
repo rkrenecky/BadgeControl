@@ -12,28 +12,20 @@ class ViewController: UIViewController {
 
   @IBOutlet weak var imageView: UIButton!
   
-  var counter = 1
-  
-  var badgeController: BadgeController?
+  var first: BadgeController?
+  var second: BadgeController?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    badgeController = BadgeController(for: imageView, badgeSizeResizingRatio: 1)
+    first = BadgeController(for: imageView, in: .lowerLeftCorner, badgeBackgroundColor: UIColor.black, badgeTextColor: UIColor.green, badgeSizeResizingRatio: 1)
+    first?.addOrReplaceCurrent(with: "99", animated: false)
     
-    //    ...
-    //    contr.increment(animated: true)
-    //    contr.decrement(animated: false)
-    //    change animation
-    //    contr.animation = nil
-    //    contr.badge.backgroundColor = UIColor.blue
-    //    contr.badge.textColor = ...
-    //    ...
+    second = BadgeController(for: imageView, in: .upperRightCorner, badgeBackgroundColor: UIColor.blue, badgeTextColor: UIColor.yellow, badgeSizeResizingRatio: 0.8)
   }
   
   @IBAction func touch(_ sender: UIButton) {
-    badgeController?.add(with: "\(counter)", animated: true)
-    counter += 1
+    first?.increment(animated: true)
+    second?.increment(animated: true)
   }
 }
-
