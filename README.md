@@ -1,3 +1,5 @@
+<img src='RepositoryImages/badge1.gif' width='200' alt='Badge1'><img src='RepositoryImages/badge2.gif' width='200' alt='Badge2'><img src='RepositoryImages/badge3.gif' width='200' alt='Badge3'>
+
 # BadgeControl
 * Simply attach BadgeController to any UIView's subclasses and easily control the badge
 * Customize size, position, background color, text color and animation of the badge
