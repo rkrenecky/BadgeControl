@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BadgeControl"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "Simple framework for adding a badge to UIView."
 
   # This description is used to generate tags and improve search results.
@@ -63,7 +63,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "11.0"
+  s.platform     = :ios, "10.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/kiwisip/BadgeControl.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/kiwisip/BadgeControl.git", :tag => "1.0.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
