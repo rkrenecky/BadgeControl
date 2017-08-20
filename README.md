@@ -64,8 +64,8 @@ init(for view: UIView, in centerPosition: CenterPosition, badgeSizeResizingRatio
 init(for view: UIView, badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1)
 init(for view: UIView, in centerPosition: CenterPosition, badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1)
 init(for view: UIView, badgeSizeResizingRatio: CGFloat = 1, animation: ((UIView) -> Void)?)
-init(for view: UIView, in centerPosition: CenterPosition, badgeSizeResizingRatio: CG Float = 1, animation: ((UIView) -> Void)?
+init(for view: UIView, in centerPosition: CenterPosition, badgeSizeResizingRatio: CG Float = 1, animation: ((UIView) -> Void)?)
 init(for view: UIView,badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1, animation: ((UIView) -> Void)?)
-init(for view: UIView, in centerPosition: CenterPosition, badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1, animation: ((UIView) -> Void)?
+init(for view: UIView, in centerPosition: CenterPosition, badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1, animation: ((UIView) -> Void)?)
 
 ~~~
