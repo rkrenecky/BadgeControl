@@ -19,7 +19,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    badgeController = BadgeController(for: imageView, badgeSizeResizingRatio: 1.5)
+    badgeController = BadgeController(for: imageView, badgeSizeResizingRatio: 1)
     
     //    ...
     //    contr.increment(animated: true)
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func touch(_ sender: UIButton) {
-    badgeController?.add(with: "\(counter)")
+    badgeController?.add(with: "\(counter)", animated: true)
     counter += 1
   }
 }

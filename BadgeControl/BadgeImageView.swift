@@ -32,10 +32,11 @@ internal class BadgeImageView: UIImageView {
     
     let height = frame.height
     let ovalWidth = height
-    let rectangleWidth = frame.width - height
+    let rightHemisphereX = frame.width - height
+    let rectangleWidth = rightHemisphereX > 0 ? rightHemisphereX : 1
     
     //// General Declarations
-    UIGraphicsBeginImageContext(CGSize(width: frame.width, height: frame.height))
+    UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
     let context = UIGraphicsGetCurrentContext()!
     
     //// Bezier Drawing
@@ -48,7 +49,7 @@ internal class BadgeImageView: UIImageView {
     //// Right Hemisphere Drawing
     context.saveGState()
     
-    let rightHemisphereRect = CGRect(x: rectangleWidth, y: 0, width: ovalWidth, height: height)
+    let rightHemisphereRect = CGRect(x: rightHemisphereX, y: 0, width: ovalWidth, height: height)
     let rightHemispherePath = UIBezierPath()
     rightHemispherePath.addArc(withCenter: CGPoint(x: rightHemisphereRect.midX, y: rightHemisphereRect.midY), radius: rightHemisphereRect.width / 2, startAngle: -90 * CGFloat.pi/180, endAngle: -270 * CGFloat.pi/180, clockwise: true)
     rightHemispherePath.addLine(to: CGPoint(x: rightHemisphereRect.midX, y: rightHemisphereRect.midY))

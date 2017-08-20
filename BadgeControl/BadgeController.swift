@@ -9,7 +9,7 @@
 import UIKit
 
 public class BadgeController {
-  private let view: UIView
+  private unowned var view: UIView
   
   public var centerPosition: CenterPosition = .upperRightCorner
   public var badgeBackgroundColor = UIColor.red
@@ -76,14 +76,14 @@ public class BadgeController {
   }
   
   // add badge to ui view
-  func add(with text: String) {
+  func add(with text: String, animated: Bool) {
     let badgeView = BadgeImageView(height: badgeHeight,
                                    center: centerPositionCGPoint,
                                    text: text,
                                    badgeBackgroundColor: badgeBackgroundColor,
                                    badgeTextColor: badgeTextColor)
     view.addSubview(badgeView)
-    animation?(badgeView)
+    if animated { animation?(badgeView) }
   }
   
   func remove() { }

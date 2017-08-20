@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vh3-qO-oBB">
-                                <rect key="frame" x="172" y="318" width="30" height="30"/>
+                                <rect key="frame" x="157" y="303" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="DBr-wS-w4p"/>
-                                    <constraint firstAttribute="width" constant="30" id="fib-fJ-Ilz"/>
+                                    <constraint firstAttribute="height" constant="60" id="DBr-wS-w4p"/>
+                                    <constraint firstAttribute="width" constant="60" id="fib-fJ-Ilz"/>
                                 </constraints>
                                 <state key="normal" image="Image"/>
                                 <connections>
@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.88280254602432251" green="0.57975441217422485" blue="0.053642861545085907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vh3-qO-oBB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="159-T4-hak"/>
                             <constraint firstItem="Vh3-qO-oBB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eyk-DT-OOq"/>
@@ -46,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="25" height="25"/>
+        <image name="Image" width="64" height="64"/>
     </resources>
 </document>
