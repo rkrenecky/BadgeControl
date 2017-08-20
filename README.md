@@ -42,7 +42,7 @@ badge.decrement(animated: true)
 
 
 ## Customization
-You can customize badge's text font, size(with ratio), center position, background color, text color and animation.
+You can customize badge's text font, size (with ratio), center position, background color, text color and animation.
 
 ~~~swift
 badge.badgeTextFont = UIFont.systemFont(ofSize: 15)
