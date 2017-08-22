@@ -35,7 +35,7 @@ public class BadgeController {
     
     self.view = view
     self.badgeSizeResizingRatio = badgeSizeResizingRatio
-    self.badgeHeight = Int(view.frame.height / 2 * badgeSizeResizingRatio)
+    self.badgeHeight = Int(view.frame.height / 1.35 * badgeSizeResizingRatio)
     self.badgeTextFont = UIFont.systemFont(ofSize: CGFloat(badgeHeight) * 23 / 32)
   }
   
