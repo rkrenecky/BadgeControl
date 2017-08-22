@@ -1,15 +1,15 @@
 <img src='RepositoryImages/badge1.gif' width='200' alt='Badge1'><img src='RepositoryImages/badge2.gif' width='200' alt='Badge2'><img src='RepositoryImages/badge3.gif' width='200' alt='Badge3'>
 
 # BadgeControl
-* Simply attach BadgeController to any UIView's subclasses and easily control the badge
-* Customize size, position, background color, text color and animation of the badge
+* Simply attach BadgeController to any UIView's subclasses and easily control the badge.
+* Customize size, position, background color, text color and animation of the badge.
 
 ## Setup (Swift 4.0)
 #### Setup with CocoaPods (iOS 10+)
 * If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
 ~~~ruby 
-    pod 'BadgeControl', :git => 'https://github.com/kiwisip/BadgeControl.git', :tag => '1.0.3'
+    pod 'BadgeControl', :git => 'https://github.com/kiwisip/BadgeControl.git'
 ~~~
 ### Add source (iOS 9+)
 * Add [BadgeController.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeController.swift), [BadgeImageView.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeImageView.swift) and [CenterPosition.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/CenterPosition.swift) to your project.
