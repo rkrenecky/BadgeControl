@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct BadgeAnimations {
-  typealias BadgeAnimation = ((UIView) -> Void)
+public struct BadgeAnimations {
+  public typealias BadgeAnimation = ((UIView) -> Void)
   
-  static var defaultAnimation: BadgeAnimation = { badgeView in
+  public static var defaultAnimation: BadgeAnimation = { badgeView in
     badgeView.transform = CGAffineTransform(scaleX: 2.7, y: 2.7)
     UIView.animate(withDuration: 0.5,
                    delay: 0,
@@ -21,7 +21,7 @@ struct BadgeAnimations {
                    completion: nil)
   }
   
-  static var leftRight: BadgeAnimation = { badgeView in
+  public static var leftRight: BadgeAnimation = { badgeView in
     let travelDistance = badgeView.frame.width * 1.5
     badgeView.center.x -= travelDistance
     UIView.animate(withDuration: 0.5,
@@ -33,7 +33,7 @@ struct BadgeAnimations {
                    completion: nil)
   }
   
-  static var rightLeft: BadgeAnimation = { badgeView in
+  public static var rightLeft: BadgeAnimation = { badgeView in
     let travelDistance = badgeView.frame.width * 1.5
     badgeView.center.x += travelDistance
     UIView.animate(withDuration: 0.5,
@@ -45,7 +45,7 @@ struct BadgeAnimations {
                    completion: nil)
   }
   
-  static var fadeIn: BadgeAnimation = { badgeView in
+  public static var fadeIn: BadgeAnimation = { badgeView in
     badgeView.alpha = 0
     UIView.animate(withDuration: 1.5,
                    delay: 0,
@@ -56,7 +56,7 @@ struct BadgeAnimations {
                    completion: nil)
   }
   
-  static var roll: BadgeAnimation = { badgeView in
+  public static var roll: BadgeAnimation = { badgeView in
     badgeView.transform = CGAffineTransform(rotationAngle: .pi)
     UIView.animate(withDuration: 0.5,
                    delay: 0,
