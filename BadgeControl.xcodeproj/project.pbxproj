@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7176E45D1F4CCBAE00781455 /* BadgeAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176E45C1F4CCBAE00781455 /* BadgeAnimations.swift */; };
 		71AE68751F49B2DD00196F80 /* BadgeControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 71AE68731F49B2DD00196F80 /* BadgeControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		71B250231F49B541001E7145 /* CenterPosition.swift in Headers */ = {isa = PBXBuildFile; fileRef = 71B250201F49B541001E7145 /* CenterPosition.swift */; };
+		71B250231F49B541001E7145 /* BadgeCenterPosition.swift in Headers */ = {isa = PBXBuildFile; fileRef = 71B250201F49B541001E7145 /* BadgeCenterPosition.swift */; };
 		71B250241F49B541001E7145 /* BadgeController.swift in Headers */ = {isa = PBXBuildFile; fileRef = 71B250211F49B541001E7145 /* BadgeController.swift */; };
 		71B250251F49B541001E7145 /* BadgeImageView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 71B250221F49B541001E7145 /* BadgeImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7176E45C1F4CCBAE00781455 /* BadgeAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeAnimations.swift; sourceTree = "<group>"; };
 		71AE68701F49B2DD00196F80 /* BadgeControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BadgeControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AE68731F49B2DD00196F80 /* BadgeControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BadgeControl.h; path = BadgeControl/BadgeControl.h; sourceTree = SOURCE_ROOT; };
 		71AE68741F49B2DD00196F80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71B250201F49B541001E7145 /* CenterPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CenterPosition.swift; path = BadgeControl/CenterPosition.swift; sourceTree = SOURCE_ROOT; };
+		71B250201F49B541001E7145 /* BadgeCenterPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BadgeCenterPosition.swift; path = BadgeControl/BadgeCenterPosition.swift; sourceTree = SOURCE_ROOT; };
 		71B250211F49B541001E7145 /* BadgeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BadgeController.swift; path = BadgeControl/BadgeController.swift; sourceTree = SOURCE_ROOT; };
 		71B250221F49B541001E7145 /* BadgeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BadgeImageView.swift; path = BadgeControl/BadgeImageView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -55,7 +57,8 @@
 				71AE68731F49B2DD00196F80 /* BadgeControl.h */,
 				71B250211F49B541001E7145 /* BadgeController.swift */,
 				71B250221F49B541001E7145 /* BadgeImageView.swift */,
-				71B250201F49B541001E7145 /* CenterPosition.swift */,
+				71B250201F49B541001E7145 /* BadgeCenterPosition.swift */,
+				7176E45C1F4CCBAE00781455 /* BadgeAnimations.swift */,
 				71AE68741F49B2DD00196F80 /* Info.plist */,
 			);
 			path = BadgeControl;
@@ -71,7 +74,7 @@
 				71B250251F49B541001E7145 /* BadgeImageView.swift in Headers */,
 				71AE68751F49B2DD00196F80 /* BadgeControl.h in Headers */,
 				71B250241F49B541001E7145 /* BadgeController.swift in Headers */,
-				71B250231F49B541001E7145 /* CenterPosition.swift in Headers */,
+				71B250231F49B541001E7145 /* BadgeCenterPosition.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7176E45D1F4CCBAE00781455 /* BadgeAnimations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

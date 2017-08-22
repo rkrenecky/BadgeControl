@@ -8,17 +8,18 @@
 
 import UIKit
 
-/*
- */
+
 public class BadgeImageView: UIImageView {
   
   // MARK: Private properties
+  
   private let text: String
   private let badgeBackgroundColor: UIColor
   private let badgeTextColor: UIColor
   private let badgeTextFont: UIFont
   
   // MARK: Initializers
+  
   internal init(height: Int,
                 center: CGPoint,
                 text: String,
@@ -41,14 +42,10 @@ public class BadgeImageView: UIImageView {
   
   // MARK: Private methods
   
-  /*
-   */
   private func calculateWidth(from height: Double, and text: String) -> Int {
     return Int(height + (Double(text.count) - 1) * height / 2.4)
   }
   
-  /*
-   */
   private func drawBadge(frame: CGRect = CGRect(x: 0, y: 0, width: 30, height: 30)) -> UIImage {
     let height = frame.height
     let ovalWidth = height
@@ -82,8 +79,6 @@ public class BadgeImageView: UIImageView {
     return image!
   }
   
-  /*
-   */
   private func drawRightHemisphere(_ rightHemisphereX: CGFloat, _ ovalWidth: CGFloat, _ height: CGFloat) {
     let rightHemisphereRect = CGRect(x: rightHemisphereX, y: 0, width: ovalWidth, height: height)
     let rightHemispherePath = UIBezierPath()
@@ -136,3 +131,4 @@ public class BadgeImageView: UIImageView {
                          withAttributes: textFontAttributes)
   }
 }
+

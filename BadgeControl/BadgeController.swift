@@ -8,28 +8,20 @@
 
 import UIKit
 
-/*
- */
+
 public class BadgeController {
   
   // MARK: Public properties
+  
   public var badgeTextFont: UIFont
   public var badgeSizeResizingRatio: CGFloat
-  public var centerPosition: CenterPosition = .upperRightCorner
+  public var centerPosition: BadgeCenterPosition = .upperRightCorner
   public var badgeBackgroundColor = UIColor.red
   public var badgeTextColor = UIColor.white
-  public var animation: ((UIView) -> Void)? = { badgeView in
-    badgeView.transform = CGAffineTransform(scaleX: 3, y: 3)
-    UIView.animate(withDuration: 0.75,
-                   delay: 0,
-                   usingSpringWithDamping: 0.5,
-                   initialSpringVelocity: 2.2,
-                   options: .curveLinear,
-                   animations: { badgeView.transform = CGAffineTransform.identity },
-                   completion: nil)
-  }
+  public var animation: ((UIView) -> Void)? = BadgeAnimations.defaultAnimation
   
   // MARK: Private properties
+  
   private unowned var view: UIView
   private var badgeHeight: Int
   private var currentBadge: BadgeImageView? = nil
@@ -37,17 +29,18 @@ public class BadgeController {
   private var centerPositionCGPoint: CGPoint { return centerPosition.getCenterPoint(in: view) }
   
   // MARK: Initializers
+  
   public init(for view: UIView,
               badgeSizeResizingRatio: CGFloat = 1) {
     
     self.view = view
     self.badgeSizeResizingRatio = badgeSizeResizingRatio
-    self.badgeHeight = Int(view.frame.height / 1.35 * badgeSizeResizingRatio)
+    self.badgeHeight = Int(view.frame.height / 2 * badgeSizeResizingRatio)
     self.badgeTextFont = UIFont.systemFont(ofSize: CGFloat(badgeHeight) * 23 / 32)
   }
   
   public convenience init(for view: UIView,
-                          in centerPosition: CenterPosition,
+                          in centerPosition: BadgeCenterPosition,
                           badgeSizeResizingRatio: CGFloat = 1) {
     
     self.init(for: view, badgeSizeResizingRatio: badgeSizeResizingRatio)
@@ -65,7 +58,7 @@ public class BadgeController {
   }
   
   public convenience init(for view: UIView,
-                          in centerPosition: CenterPosition,
+                          in centerPosition: BadgeCenterPosition,
                           badgeBackgroundColor: UIColor,
                           badgeTextColor: UIColor,
                           badgeSizeResizingRatio: CGFloat = 1) {
@@ -84,7 +77,7 @@ public class BadgeController {
   }
   
   public convenience init(for view: UIView,
-                          in centerPosition: CenterPosition,
+                          in centerPosition: BadgeCenterPosition,
                           badgeSizeResizingRatio: CGFloat = 1,
                           animation: ((UIView) -> Void)?) {
     
@@ -106,7 +99,7 @@ public class BadgeController {
   }
   
   public convenience init(for view: UIView,
-                          in centerPosition: CenterPosition,
+                          in centerPosition: BadgeCenterPosition,
                           badgeBackgroundColor: UIColor,
                           badgeTextColor: UIColor,
                           badgeSizeResizingRatio: CGFloat = 1,
@@ -122,8 +115,6 @@ public class BadgeController {
   
   // MARK: Public methods
   
-  /*
-   */
   public func addOrReplaceCurrent(with text: String, animated: Bool) {
     if currentBadge != nil { remove() }
     let badgeView = BadgeImageView(height: badgeHeight,
@@ -138,14 +129,10 @@ public class BadgeController {
     if animated { animation?(badgeView) }
   }
   
-  /*
-   */
   public func remove() {
     currentBadge?.removeFromSuperview()
   }
-  
-  /*
-   */
+
   public func increment(animated: Bool) {
     if currentBadge != nil {
       guard let counter = counter else {
@@ -157,9 +144,7 @@ public class BadgeController {
       addOrReplaceCurrent(with: ("1"), animated: animated)
     }
   }
-  
-  /*
-   */
+
   public func decrement(animated: Bool) {
     if currentBadge != nil {
       guard let counter = counter else {
@@ -174,3 +159,4 @@ public class BadgeController {
     }
   }
 }
+

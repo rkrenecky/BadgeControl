@@ -8,9 +8,8 @@
 
 import UIKit
 
-/*
- */
-public enum CenterPosition {
+
+public enum BadgeCenterPosition {
   
   case upperLeftCorner
   case upperRightCorner
@@ -18,8 +17,6 @@ public enum CenterPosition {
   case lowerRightCorner
   case custom(x: Double, y: Double)
   
-  /*
-   */
   public func getCenterPoint(in view: UIView) -> CGPoint {
     switch self {
     case .upperLeftCorner:
