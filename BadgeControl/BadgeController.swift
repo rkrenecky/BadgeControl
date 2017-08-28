@@ -131,6 +131,7 @@ public class BadgeController {
   
   public func remove() {
     currentBadge?.removeFromSuperview()
+    currentBadge = nil
   }
 
   public func increment(animated: Bool) {
