@@ -11,7 +11,7 @@
 ~~~ruby 
     pod 'BadgeControl', :git => 'https://github.com/kiwisip/BadgeControl.git'
 ~~~
-### Add source (iOS 9+)
+#### Add source (iOS 9+)
 * Add [BadgeController.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeController.swift), [BadgeImageView.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeImageView.swift), [BadgeCenterPosition.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeCenterPosition.swift) and [BadgeAnimations.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeAnimations.swift) to your project.
 
 ## Usage
