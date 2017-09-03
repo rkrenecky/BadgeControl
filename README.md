@@ -1,6 +1,4 @@
-<img src='RepositoryImages/default.gif' width='260' alt='default'>
-<img src='RepositoryImages/boom.gif' width='260' alt='boom'>
-<img src='RepositoryImages/all.gif' width='260' alt='all'>
+<img src='RepositoryImages/default.gif' width='260' alt='default'><img src='RepositoryImages/boom.gif' width='260' alt='boom'><img src='RepositoryImages/all.gif' width='260' alt='all'>
 
 # BadgeControl
 * Simply attach BadgeController to any UIView's subclasses and easily control the badge.
