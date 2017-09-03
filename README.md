@@ -4,7 +4,7 @@
 * Simply attach BadgeController to any UIView's subclasses and easily control the badge.
 * Customize size, position, background color, text color and animation of the badge.
 
-## Setup (Swift 4.0)
+## Setup
 #### Setup with CocoaPods (iOS 9+)
 * If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
