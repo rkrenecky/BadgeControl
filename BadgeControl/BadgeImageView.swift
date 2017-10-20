@@ -43,7 +43,8 @@ public class BadgeImageView: UIImageView {
   // MARK: Private methods
   
   private func calculateWidth(from height: Double, and text: String) -> Int {
-    return Int(height + (Double(text.count) - 1) * height / 2.4)
+    let ratio = text.count > 0 ? text.count : 1
+    return Int(height + (Double(ratio) - 1) * height / 2.4)
   }
   
   private func drawBadge(frame: CGRect = CGRect(x: 0, y: 0, width: 30, height: 30)) -> UIImage {
