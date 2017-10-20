@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/kiwisip/BadgeControl.git", :tag => "1.0.1" }
+  s.source       = { :git => "https://github.com/kiwisip/BadgeControl.git", :tag => "1.0.2" }
 
   s.source_files  = "BadgeControl", "BadgeControl/**/*.{h,m,swift}"
   s.exclude_files = "Classes/Exclude"
