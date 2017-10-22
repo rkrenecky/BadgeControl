@@ -21,6 +21,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
   private var badges: [BadgeController] = []
   
+  var num = 1
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -31,6 +33,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                      badgeBackgroundColor: UIColor.blue,
                                      badgeTextColor: UIColor.yellow,
                                      badgeSizeResizingRatio: 0.75)
+    upperLeftBadge.animateOnlyWhenBadgeIsNotYetPresent = true
+
     upperRightBadge = BadgeController(for: imageView)
     lowerLeftBadge = BadgeController(for: imageView,
                                      in: .lowerLeftCorner,
@@ -53,7 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     case "leftRight": badges.forEach { $0.animation = BadgeAnimations.leftRight }
     case "rightLeft": badges.forEach { $0.animation = BadgeAnimations.rightLeft }
     case "fadeIn": badges.forEach { $0.animation = BadgeAnimations.fadeIn }
-    case "roll": badges.forEach { $0.animation = BadgeAnimations.roll }
+    case "roll": badges.forEach { $0.animation = BadgeAnimations.rolling }
     default: return
     }
   }
@@ -64,10 +68,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
   }
   
   @IBAction func remove(_ sender: UIButton) {
-    badges.forEach { $0.remove() }
+    badges.forEach { $0.remove(animated: true) }
   }
   
   @IBAction func increment(_ sender: UIButton) {
+    num += 1
     badges.forEach { $0.increment(animated: true) }
   }
   

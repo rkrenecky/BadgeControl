@@ -1,5 +1,5 @@
 PODS:
-  - BadgeControl (1.0.1)
+  - BadgeControl (1.0.3)
 
 DEPENDENCIES:
   - BadgeControl (from `https://github.com/kiwisip/BadgeControl.git`)
@@ -10,11 +10,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   BadgeControl:
-    :commit: 36809ede231abeabc770eff3aea30c1d8f336178
+    :commit: 43b39cfe1a02ac3e35a8e4a0bad331703a582e4d
     :git: https://github.com/kiwisip/BadgeControl.git
 
 SPEC CHECKSUMS:
-  BadgeControl: a218c9f0fe8139416ab460ce41687fbf4bc89f6c
+  BadgeControl: dc44460a5cddf61cb9f59a53f69efc5abd99a357
 
 PODFILE CHECKSUM: 5ab75b87f7627a5128383f93813ce50f0dbac0f1
 
