@@ -94,11 +94,11 @@ badge.animation = BadgeAnimations.rightLeft
 badge.animation = BadgeAnimations.fadeIn
 ~~~
 
-###### Roll animation
+###### Rolling animation
 <img src='RepositoryImages/roll.gif' width='170' alt='default'>
 
 ~~~swift
-badge.animation = BadgeAnimations.roll
+badge.animation = BadgeAnimations.rolling
 ~~~
 
 ###### Custom
