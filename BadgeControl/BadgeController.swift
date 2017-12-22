@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public class BadgeController {
 
   // MARK: Public properties
@@ -103,6 +102,38 @@ public class BadgeController {
   }
 
   public convenience init(for view: UIView,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          badgeSizeResizingRatio: CGFloat = 1,
+                          animation: ((UIView) -> Void)?) {
+
+    self.init(for: view,
+              badgeBackgroundColor: badgeBackgroundColor,
+              badgeTextColor: badgeTextColor,
+              badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.borderWidth = borderWidth
+    self.animation = animation
+  }
+
+  public convenience init(for view: UIView,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          borderColor: UIColor,
+                          badgeSizeResizingRatio: CGFloat = 1,
+                          animation: ((UIView) -> Void)?) {
+
+    self.init(for: view,
+              badgeBackgroundColor: badgeBackgroundColor,
+              badgeTextColor: badgeTextColor,
+              badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.borderWidth = borderWidth
+    self.borderColor = borderColor
+    self.animation = animation
+  }
+
+  public convenience init(for view: UIView,
                           in centerPosition: BadgeCenterPosition,
                           badgeBackgroundColor: UIColor,
                           badgeTextColor: UIColor,
@@ -114,6 +145,42 @@ public class BadgeController {
               badgeBackgroundColor: badgeBackgroundColor,
               badgeTextColor: badgeTextColor,
               badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.animation = animation
+  }
+
+  public convenience init(for view: UIView,
+                          in centerPosition: BadgeCenterPosition,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          badgeSizeResizingRatio: CGFloat = 1,
+                          animation: ((UIView) -> Void)?) {
+
+    self.init(for: view,
+              in: centerPosition,
+              badgeBackgroundColor: badgeBackgroundColor,
+              badgeTextColor: badgeTextColor,
+              badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.borderWidth = borderWidth
+    self.animation = animation
+  }
+
+  public convenience init(for view: UIView,
+                          in centerPosition: BadgeCenterPosition,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          borderColor: UIColor,
+                          badgeSizeResizingRatio: CGFloat = 1,
+                          animation: ((UIView) -> Void)?) {
+
+    self.init(for: view,
+              in: centerPosition,
+              badgeBackgroundColor: badgeBackgroundColor,
+              badgeTextColor: badgeTextColor,
+              badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.borderWidth = borderWidth
+    self.borderColor = borderColor
     self.animation = animation
   }
 
