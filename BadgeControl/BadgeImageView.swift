@@ -79,7 +79,7 @@ public class BadgeImageView: UIImageView {
 
     addRightHemisphereArc(to: &ovalPath, rightHemisphereX, ovalWidth, height)
     ovalPath.addLine(to: CGPoint(x: ovalWidth / 2, y: height + borderWidth / 2))
-    addLeftHemisphereRect(to: &ovalPath, frame, ovalWidth, height)
+    addLeftHemisphereArc(to: &ovalPath, frame, ovalWidth, height)
     ovalPath.close()
 
     badgeBackgroundColor.setFill()
@@ -100,7 +100,7 @@ public class BadgeImageView: UIImageView {
                 clockwise: true)
   }
 
-  private func addLeftHemisphereRect(to path: inout UIBezierPath, _ frame: CGRect, _ ovalWidth: CGFloat, _ height: CGFloat) {
+  private func addLeftHemisphereArc(to path: inout UIBezierPath, _ frame: CGRect, _ ovalWidth: CGFloat, _ height: CGFloat) {
     let leftHemisphereRect = CGRect(x: frame.minX + borderWidth / 2, y: frame.minY + borderWidth / 2, width: ovalWidth, height: height)
 
     path.addArc(withCenter: CGPoint(x: leftHemisphereRect.midX, y: leftHemisphereRect.midY),
