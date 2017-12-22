@@ -18,6 +18,8 @@ public class BadgeController {
   public var centerPosition: BadgeCenterPosition = .upperRightCorner
   public var badgeBackgroundColor = UIColor.red
   public var badgeTextColor = UIColor.white
+  public var borderWidth: CGFloat = 0.0
+  public var borderColor = UIColor.black
   public var animation: ((UIView) -> Void)? = BadgeAnimations.defaultAnimation
 
   public var animateOnlyWhenBadgeIsNotYetPresent = false
@@ -123,7 +125,7 @@ public class BadgeController {
       remove(animated: false)
       if animateOnlyWhenBadgeIsNotYetPresent { animated = false }
     }
-    let badgeView = BadgeImageView(height: badgeHeight,
+    let badgeView = BadgeImageView(height: badgeHeight + Int(borderWidth * 2),
                                    center: centerPositionCGPoint,
                                    text: text,
                                    badgeBackgroundColor: badgeBackgroundColor,
