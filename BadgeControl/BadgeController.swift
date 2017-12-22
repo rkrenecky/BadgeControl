@@ -130,7 +130,9 @@ public class BadgeController {
                                    text: text,
                                    badgeBackgroundColor: badgeBackgroundColor,
                                    badgeTextColor: badgeTextColor,
-                                   badgeTextFont: badgeTextFont)
+                                   badgeTextFont: badgeTextFont,
+                                   borderWidth: borderWidth,
+                                   borderColor: borderColor)
     currentBadge = badgeView
     counter = Int(text)
     view.addSubview(badgeView)
