@@ -17,6 +17,8 @@ public class BadgeImageView: UIImageView {
   private let badgeBackgroundColor: UIColor
   private let badgeTextColor: UIColor
   private let badgeTextFont: UIFont
+  private let borderWidth: CGFloat
+  private let borderColor: UIColor
   
   // MARK: Initializers
   
@@ -25,14 +27,18 @@ public class BadgeImageView: UIImageView {
                 text: String,
                 badgeBackgroundColor: UIColor,
                 badgeTextColor: UIColor,
-                badgeTextFont: UIFont) {
+                badgeTextFont: UIFont,
+                borderWidth: CGFloat,
+                borderColor: UIColor) {
     
     self.text = text
     self.badgeBackgroundColor = badgeBackgroundColor
     self.badgeTextColor = badgeTextColor
     self.badgeTextFont = badgeTextFont
+    self.borderWidth = borderWidth
+    self.borderColor = borderColor
     
-    super.init(image: drawBadge(frame: CGRect(x: 0, y: 0, width: calculateWidth(from: Double(height), and: text), height: height)))
+    super.init(image: drawBadge(frame: CGRect(x: 0, y: 0, width: calculateWidth(from: Double(height) - Double(borderWidth * 2), and: text), height: height)))
     super.center = center
   }
   
@@ -44,32 +50,20 @@ public class BadgeImageView: UIImageView {
   
   private func calculateWidth(from height: Double, and text: String) -> Int {
     let ratio = text.count > 0 ? text.count : 1
-    return Int(height + (Double(ratio) - 1) * height / 2.4)
+    return Int(height + (Double(ratio) - 1) * height / 2.4) + Int(borderWidth * 2)
   }
   
   private func drawBadge(frame: CGRect = CGRect(x: 0, y: 0, width: 30, height: 30)) -> UIImage {
-    let height = frame.height
+    let height = frame.height - borderWidth
     let ovalWidth = height
-    let rightHemisphereX = frame.width - height
-    let rectangleWidth = rightHemisphereX > 0 ? rightHemisphereX : 1
+    let rightHemisphereX = frame.width - borderWidth / 2 - height
     
     UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
     let context = UIGraphicsGetCurrentContext()!
     
-    let bezierPath = UIBezierPath()
-    UIColor.black.setStroke()
-    bezierPath.lineWidth = 1
-    bezierPath.stroke()
-    
     context.saveGState()
-    drawRightHemisphere(rightHemisphereX, ovalWidth, height)
+    drawOval(height, ovalWidth, rightHemisphereX)
     context.restoreGState()
-    drawLeftHemisphere(frame, ovalWidth, height)
-    
-    // Draw rectangle
-    let rectanglePath = UIBezierPath(rect: CGRect(x: ovalWidth / 2, y: frame.minY, width: rectangleWidth, height: height))
-    badgeBackgroundColor.setFill()
-    rectanglePath.fill()
     
     context.saveGState()
     drawText(frame, context)
@@ -79,34 +73,41 @@ public class BadgeImageView: UIImageView {
     UIGraphicsEndImageContext()
     return image!
   }
-  
-  private func drawRightHemisphere(_ rightHemisphereX: CGFloat, _ ovalWidth: CGFloat, _ height: CGFloat) {
-    let rightHemisphereRect = CGRect(x: rightHemisphereX, y: 0, width: ovalWidth, height: height)
-    let rightHemispherePath = UIBezierPath()
-    rightHemispherePath.addArc(withCenter: CGPoint(x: rightHemisphereRect.midX, y: rightHemisphereRect.midY),
-                               radius: rightHemisphereRect.width / 2,
-                               startAngle: -90 * CGFloat.pi / 180,
-                               endAngle: -270 * CGFloat.pi / 180,
-                               clockwise: true)
-    rightHemispherePath.addLine(to: CGPoint(x: rightHemisphereRect.midX, y: rightHemisphereRect.midY))
-    rightHemispherePath.close()
-    
+
+  private func drawOval(_ height: CGFloat, _ ovalWidth: CGFloat, _ rightHemisphereX: CGFloat) {
+    var ovalPath = UIBezierPath()
+
+    addRightHemisphereArc(to: &ovalPath, rightHemisphereX, ovalWidth, height)
+    ovalPath.addLine(to: CGPoint(x: ovalWidth / 2, y: height + borderWidth / 2))
+    addLeftHemisphereArc(to: &ovalPath, frame, ovalWidth, height)
+    ovalPath.close()
+
     badgeBackgroundColor.setFill()
-    rightHemispherePath.fill()
+    ovalPath.fill()
+
+    borderColor.setStroke()
+    ovalPath.lineWidth = borderWidth
+    ovalPath.stroke()
   }
-  
-  private func drawLeftHemisphere(_ frame: CGRect, _ ovalWidth: CGFloat, _ height: CGFloat) {
-    let leftHemisphereRect = CGRect(x: frame.minX, y: frame.minY, width: ovalWidth, height: height)
-    let leftHemispherePath = UIBezierPath()
-    leftHemispherePath.addArc(withCenter: CGPoint(x: leftHemisphereRect.midX, y: leftHemisphereRect.midY),
-                              radius: leftHemisphereRect.width / 2,
-                              startAngle: -270 * CGFloat.pi / 180,
-                              endAngle: -90 * CGFloat.pi / 180, clockwise: true)
-    leftHemispherePath.addLine(to: CGPoint(x: leftHemisphereRect.midX, y: leftHemisphereRect.midY))
-    leftHemispherePath.close()
-    
-    badgeBackgroundColor.setFill()
-    leftHemispherePath.fill()
+
+  private func addRightHemisphereArc(to path: inout UIBezierPath, _ rightHemisphereX: CGFloat, _ ovalWidth: CGFloat, _ height: CGFloat) {
+    let rightHemisphereRect = CGRect(x: rightHemisphereX, y: borderWidth / 2, width: ovalWidth, height: height)
+
+    path.addArc(withCenter: CGPoint(x: rightHemisphereRect.midX, y: rightHemisphereRect.midY),
+                radius: rightHemisphereRect.width / 2,
+                startAngle: -90 * CGFloat.pi / 180,
+                endAngle: -270 * CGFloat.pi / 180,
+                clockwise: true)
+  }
+
+  private func addLeftHemisphereArc(to path: inout UIBezierPath, _ frame: CGRect, _ ovalWidth: CGFloat, _ height: CGFloat) {
+    let leftHemisphereRect = CGRect(x: frame.minX + borderWidth / 2, y: frame.minY + borderWidth / 2, width: ovalWidth, height: height)
+
+    path.addArc(withCenter: CGPoint(x: leftHemisphereRect.midX, y: leftHemisphereRect.midY),
+                radius: leftHemisphereRect.width / 2,
+                startAngle: -270 * CGFloat.pi / 180,
+                endAngle: -90 * CGFloat.pi / 180,
+                clockwise: true)
   }
   
   private func drawText(_ frame: CGRect, _ context: CGContext) {
