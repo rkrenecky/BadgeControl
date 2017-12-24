@@ -2,14 +2,14 @@
 
 # BadgeControl
 * Simply attach BadgeController to any UIView's subclasses and easily control the badge.
-* Customize size, position, background color, text color and animation of the badge.
+* Customize size, position, background color, text color, border width, border color and animation of the badge.
 
 ## Setup
 #### Setup with CocoaPods (iOS 9+)
 * If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
 ~~~ruby 
-    pod 'BadgeControl', :git => 'https://github.com/kiwisip/BadgeControl.git'
+    pod 'BadgeControl'
 ~~~
 #### Add source (iOS 9+)
 * Add [BadgeController.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeController.swift), [BadgeImageView.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeImageView.swift), [BadgeCenterPosition.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeCenterPosition.swift) and [BadgeAnimations.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeAnimations.swift) to your project.
@@ -22,7 +22,13 @@ Simply attach BadgeController to your UIView (or its subclass).
 let badge = BadgeController(for: myUIView)
 ~~~
 
-Add a text to your badge and present it with animation.
+Add an empty badge and present it with animation.
+
+~~~swift
+badge.addOrReplaceCurrent(animated: true)
+~~~
+
+Add a badge with text and present it with animation.
 
 ~~~swift
 badge.addOrReplaceCurrent(with text: "1", animated: true)
@@ -31,7 +37,7 @@ badge.addOrReplaceCurrent(with text: "1", animated: true)
 Remove badge from its view.
 
 ~~~swift
-badge.remove()
+badge.remove(animated: true)
 ~~~
 
 Simply increment or decrement the value on your badge (if it is numeric) and present it with animation.
@@ -41,15 +47,19 @@ badge.increment(animated: true)
 badge.decrement(animated: true)
 ~~~
 
+You can also set `animateOnlyWhenBadgeIsNotYetPresent = false` if you don't want animation when badge is already present on the view.
+
 
 ## Customization
-You can customize badge's text font, background color, text color, size, center position and animation.
+You can customize badge's text font, background color, text color, border width, border color, size, center position and animation.
 
-#### Text font, background color, text color and size
+#### Text font, background color, text color, border width, border color and size
 ~~~swift
 badge.badgeTextFont = UIFont.systemFont(ofSize: 15)
 badge.badgeBackgroundColor = UIColor.blue
 badge.badgeTextColor = UIColor.yellow
+badge.borderWidth = 3 // in px
+badge.borderColor = UIColor.black // black is default
 badge.badgeSizeResizingRatio = 2 // badge will be 2x bigger than default
 ~~~
 
@@ -111,17 +121,19 @@ badge.animation = { badgeView in
 ~~~
 
 #### Initialization
-You can use one of these initalizers for your convenience:
+You can use this initalizer with default values:
 
 ~~~swift
-init(for view: UIView, badgeSizeResizingRatio: CGFloat = 1)
-init(for view: UIView, in centerPosition: CenterPosition, badgeSizeResizingRatio: CGFloat = 1)
-init(for view: UIView, badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1)
-init(for view: UIView, in centerPosition: CenterPosition, badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1)
-init(for view: UIView, badgeSizeResizingRatio: CGFloat = 1, animation: ((UIView) -> Void)?)
-init(for view: UIView, in centerPosition: CenterPosition, badgeSizeResizingRatio: CG Float = 1, animation: ((UIView) -> Void)?)
-init(for view: UIView,badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1, animation: ((UIView) -> Void)?)
-init(for view: UIView, in centerPosition: CenterPosition, badgeBackgroundColor: UIColor, badgeTextColor: UIColor, badgeSizeResizingRatio: CGFloat = 1, animation: ((UIView) -> Void)?)
+public init(for view: UIView,
+              in centerPosition: BadgeCenterPosition = .upperRightCorner,
+              badgeBackgroundColor: UIColor = .red,
+              badgeTextColor: UIColor = .white,
+              badgeTextFont: UIFont? = nil,
+              borderWidth: CGFloat = 0.0,
+              borderColor: UIColor = .black,
+              animation: ((UIView) -> Void)? = BadgeAnimations.defaultAnimation,
+              badgeHeight: Int? = nil,
+              animateOnlyWhenBadgeIsNotYetPresent: Bool = false)
 
 ~~~
 
