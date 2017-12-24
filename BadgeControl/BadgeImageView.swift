@@ -133,4 +133,3 @@ public class BadgeImageView: UIImageView {
                          withAttributes: textFontAttributes)
   }
 }
-
