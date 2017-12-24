@@ -60,7 +60,7 @@ badge.badgeBackgroundColor = UIColor.blue
 badge.badgeTextColor = UIColor.yellow
 badge.borderWidth = 3 // in px
 badge.borderColor = UIColor.black // black is default
-badge.badgeSizeResizingRatio = 2 // badge will be 2x bigger than default
+badge.badgeHeight = 20 // badge will have height of 20px
 ~~~
 
 #### Center position
