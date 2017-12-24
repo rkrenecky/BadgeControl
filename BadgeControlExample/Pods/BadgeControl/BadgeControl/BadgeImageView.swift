@@ -34,6 +34,11 @@ public class BadgeImageView: UIImageView {
     
     super.init(image: drawBadge(frame: CGRect(x: 0, y: 0, width: calculateWidth(from: Double(height), and: text), height: height)))
     super.center = center
+
+    self.layer.masksToBounds = true
+    self.layer.borderColor = UIColor.white.cgColor
+    self.layer.cornerRadius = CGFloat(height) / 2
+    self.layer.borderWidth = 4
   }
   
   public required init?(coder aDecoder: NSCoder) {
@@ -55,12 +60,7 @@ public class BadgeImageView: UIImageView {
     
     UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
     let context = UIGraphicsGetCurrentContext()!
-    
-    let bezierPath = UIBezierPath()
-    UIColor.black.setStroke()
-    bezierPath.lineWidth = 1
-    bezierPath.stroke()
-    
+
     context.saveGState()
     drawRightHemisphere(rightHemisphereX, ovalWidth, height)
     context.restoreGState()
