@@ -47,7 +47,7 @@ badge.increment(animated: true)
 badge.decrement(animated: true)
 ~~~
 
-You can also set `animateOnlyWhenBadgeIsNotYetPresent = false` if you don't want animation when badge is already present on the view.
+You can also set `animateOnlyWhenBadgeIsNotYetPresent = true` if you don't want animation when badge is already present on the view.
 
 
 ## Customization
