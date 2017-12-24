@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '37DB5337445A3CF3CE7EDF498886F692'
+               BlueprintIdentifier = 'FDA26F14D6F3EA8602B68C05178A7C85'
                BlueprintName = 'BadgeControl'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'BadgeControl.framework'>

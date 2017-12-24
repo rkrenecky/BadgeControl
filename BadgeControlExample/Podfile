@@ -6,5 +6,5 @@ target 'BadgeControlExample' do
   use_frameworks!
 
   # Pods for BadgeControlExample
-  pod 'BadgeControl', :git => 'https://github.com/kiwisip/BadgeControl.git'
+  pod 'BadgeControl'
 end

@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                      in: .upperLeftCorner,
                                      badgeBackgroundColor: UIColor.blue,
                                      badgeTextColor: UIColor.yellow,
-                                     badgeSizeResizingRatio: 0.75)
+                                     badgeHeight: 30)
     upperLeftBadge.animateOnlyWhenBadgeIsNotYetPresent = true
 
     upperRightBadge = BadgeController(for: imageView)
@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                       badgeTextColor: UIColor.black,
                                       borderWidth: 6,
                                       borderColor: UIColor.black,
-                                      badgeSizeResizingRatio: 0.5)
+                                      badgeHeight: 30)
     
     badges = [upperLeftBadge, upperRightBadge, lowerLeftBadge, lowerRightBadge]
   }

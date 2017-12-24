@@ -1,21 +1,12 @@
 PODS:
-  - BadgeControl (1.0.4)
+  - BadgeControl (1.0.5)
 
 DEPENDENCIES:
-  - BadgeControl (from `https://github.com/kiwisip/BadgeControl.git`)
-
-EXTERNAL SOURCES:
-  BadgeControl:
-    :git: https://github.com/kiwisip/BadgeControl.git
-
-CHECKOUT OPTIONS:
-  BadgeControl:
-    :commit: 840c0d4be24efe5f8435383a085d38a3c79ef5f8
-    :git: https://github.com/kiwisip/BadgeControl.git
+  - BadgeControl
 
 SPEC CHECKSUMS:
-  BadgeControl: 6d03f2dd177a28827516ace64bcfe2bede490216
+  BadgeControl: 569b2d632f4d7bf6e35529f393c2829caffec187
 
-PODFILE CHECKSUM: 5ab75b87f7627a5128383f93813ce50f0dbac0f1
+PODFILE CHECKSUM: 0b770265d3a6cc4d4422e85c3595ca22cc69c79c
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0.rc.1
