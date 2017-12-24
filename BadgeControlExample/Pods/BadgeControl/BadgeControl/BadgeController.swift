@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public class BadgeController {
 
   // MARK: Public properties
@@ -18,6 +17,8 @@ public class BadgeController {
   public var centerPosition: BadgeCenterPosition = .upperRightCorner
   public var badgeBackgroundColor = UIColor.red
   public var badgeTextColor = UIColor.white
+  public var borderWidth: CGFloat = 0.0
+  public var borderColor = UIColor.black
   public var animation: ((UIView) -> Void)? = BadgeAnimations.defaultAnimation
 
   public var animateOnlyWhenBadgeIsNotYetPresent = false
@@ -60,6 +61,27 @@ public class BadgeController {
   }
 
   public convenience init(for view: UIView,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          badgeSizeResizingRatio: CGFloat = 1) {
+
+    self.init(for: view, badgeBackgroundColor: badgeBackgroundColor, badgeTextColor: badgeTextColor, badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.borderWidth = borderWidth
+  }
+
+  public convenience init(for view: UIView,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          borderColor: UIColor,
+                          badgeSizeResizingRatio: CGFloat = 1) {
+
+    self.init(for: view, badgeBackgroundColor: badgeBackgroundColor, badgeTextColor: badgeTextColor, borderWidth: borderWidth, badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.borderColor = borderColor
+  }
+
+  public convenience init(for view: UIView,
                           in centerPosition: BadgeCenterPosition,
                           badgeBackgroundColor: UIColor,
                           badgeTextColor: UIColor,
@@ -68,6 +90,29 @@ public class BadgeController {
     self.init(for: view, in: centerPosition, badgeSizeResizingRatio: badgeSizeResizingRatio)
     self.badgeBackgroundColor = badgeBackgroundColor
     self.badgeTextColor = badgeTextColor
+  }
+
+  public convenience init(for view: UIView,
+                          in centerPosition: BadgeCenterPosition,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          badgeSizeResizingRatio: CGFloat = 1) {
+
+    self.init(for: view, in: centerPosition, badgeBackgroundColor: badgeBackgroundColor, badgeTextColor: badgeTextColor, badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.borderWidth = borderWidth
+  }
+
+  public convenience init(for view: UIView,
+                          in centerPosition: BadgeCenterPosition,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          borderColor: UIColor,
+                          badgeSizeResizingRatio: CGFloat = 1) {
+
+    self.init(for: view, in: centerPosition, badgeBackgroundColor: badgeBackgroundColor, badgeTextColor: badgeTextColor, borderWidth: borderWidth, badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.borderColor = borderColor
   }
 
   public convenience init(for view: UIView,
@@ -101,6 +146,38 @@ public class BadgeController {
   }
 
   public convenience init(for view: UIView,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          badgeSizeResizingRatio: CGFloat = 1,
+                          animation: ((UIView) -> Void)?) {
+
+    self.init(for: view,
+              badgeBackgroundColor: badgeBackgroundColor,
+              badgeTextColor: badgeTextColor,
+              borderWidth: borderWidth,
+              badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.animation = animation
+  }
+
+  public convenience init(for view: UIView,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          borderColor: UIColor,
+                          badgeSizeResizingRatio: CGFloat = 1,
+                          animation: ((UIView) -> Void)?) {
+
+    self.init(for: view,
+              badgeBackgroundColor: badgeBackgroundColor,
+              badgeTextColor: badgeTextColor,
+              borderWidth: borderWidth,
+              borderColor: borderColor,
+              badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.animation = animation
+  }
+
+  public convenience init(for view: UIView,
                           in centerPosition: BadgeCenterPosition,
                           badgeBackgroundColor: UIColor,
                           badgeTextColor: UIColor,
@@ -115,6 +192,42 @@ public class BadgeController {
     self.animation = animation
   }
 
+  public convenience init(for view: UIView,
+                          in centerPosition: BadgeCenterPosition,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          badgeSizeResizingRatio: CGFloat = 1,
+                          animation: ((UIView) -> Void)?) {
+
+    self.init(for: view,
+              in: centerPosition,
+              badgeBackgroundColor: badgeBackgroundColor,
+              badgeTextColor: badgeTextColor,
+              borderWidth: borderWidth,
+              badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.animation = animation
+  }
+
+  public convenience init(for view: UIView,
+                          in centerPosition: BadgeCenterPosition,
+                          badgeBackgroundColor: UIColor,
+                          badgeTextColor: UIColor,
+                          borderWidth: CGFloat,
+                          borderColor: UIColor,
+                          badgeSizeResizingRatio: CGFloat = 1,
+                          animation: ((UIView) -> Void)?) {
+
+    self.init(for: view,
+              in: centerPosition,
+              badgeBackgroundColor: badgeBackgroundColor,
+              badgeTextColor: badgeTextColor,
+              borderWidth: borderWidth,
+              borderColor: borderColor,
+              badgeSizeResizingRatio: badgeSizeResizingRatio)
+    self.animation = animation
+  }
+
   // MARK: Public methods
 
   public func addOrReplaceCurrent(with text: String, animated: Bool) {
@@ -123,12 +236,14 @@ public class BadgeController {
       remove(animated: false)
       if animateOnlyWhenBadgeIsNotYetPresent { animated = false }
     }
-    let badgeView = BadgeImageView(height: badgeHeight,
+    let badgeView = BadgeImageView(height: badgeHeight + Int(borderWidth * 2),
                                    center: centerPositionCGPoint,
                                    text: text,
                                    badgeBackgroundColor: badgeBackgroundColor,
                                    badgeTextColor: badgeTextColor,
-                                   badgeTextFont: badgeTextFont)
+                                   badgeTextFont: badgeTextFont,
+                                   borderWidth: borderWidth,
+                                   borderColor: borderColor)
     currentBadge = badgeView
     counter = Int(text)
     view.addSubview(badgeView)

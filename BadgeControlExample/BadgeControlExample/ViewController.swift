@@ -42,8 +42,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                      badgeTextColor: UIColor.cyan)
     lowerRightBadge = BadgeController(for: imageView,
                                       in: .lowerRightCorner,
-                                      badgeBackgroundColor: UIColor.brown,
-                                      badgeTextColor: UIColor.green,
+                                      badgeBackgroundColor: UIColor.white,
+                                      badgeTextColor: UIColor.black,
+                                      borderWidth: 6,
+                                      borderColor: UIColor.black,
                                       badgeSizeResizingRatio: 0.5)
     
     badges = [upperLeftBadge, upperRightBadge, lowerLeftBadge, lowerRightBadge]
