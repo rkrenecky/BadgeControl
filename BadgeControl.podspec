@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "BadgeControl"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "Simple framework for adding a badge to UIView."
 
   s.description  = "Simply attach BadgeController to any UIView's subclasses and easily control the badge. Customize size, position, background color, text color and animation of the badge."
