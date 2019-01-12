@@ -125,16 +125,15 @@ You can use this initalizer with default values:
 
 ~~~swift
 public init(for view: UIView,
-              in centerPosition: BadgeCenterPosition = .upperRightCorner,
-              badgeBackgroundColor: UIColor = .red,
-              badgeTextColor: UIColor = .white,
-              badgeTextFont: UIFont? = nil,
-              borderWidth: CGFloat = 0.0,
-              borderColor: UIColor = .black,
-              animation: ((UIView) -> Void)? = BadgeAnimations.defaultAnimation,
-              badgeHeight: Int? = nil,
-              animateOnlyWhenBadgeIsNotYetPresent: Bool = false)
-
+            in centerPosition: BadgeCenterPosition = .upperRightCorner,
+            badgeBackgroundColor: UIColor = .red,
+            badgeTextColor: UIColor = .white,
+            badgeTextFont: UIFont? = nil,
+            borderWidth: CGFloat = 0.0,
+            borderColor: UIColor = .black,
+            animation: ((UIView) -> Void)? = BadgeAnimations.defaultAnimation,
+            badgeHeight: Int? = nil
+            animateOnlyWhenBadgeIsNotYetPresent: Bool = false)
 ~~~
 
 ## License
