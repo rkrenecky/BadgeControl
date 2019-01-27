@@ -121,7 +121,7 @@ public class BadgeImageView: UIImageView {
             .font: badgeTextFont,
             .foregroundColor: badgeTextColor,
             .paragraphStyle: textStyle,
-        ] as [NSAttributedStringKey: Any]
+        ] as [NSAttributedString.Key: Any]
 
         let textTextHeight: CGFloat = textTextContent.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity),
                                                                    options: .usesLineFragmentOrigin,

@@ -100,7 +100,6 @@
 				7128942B1F49B44E00C03939 /* Frameworks */,
 				7128942C1F49B44E00C03939 /* Resources */,
 				E21D384D7D3EE444C77D050A /* [CP] Embed Pods Frameworks */,
-				A6AB0E9B252B7C9E843890A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,28 +175,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A6AB0E9B252B7C9E843890A8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BadgeControlExample/Pods-BadgeControlExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E21D384D7D3EE444C77D050A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BadgeControlExample/Pods-BadgeControlExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BadgeControlExample/Pods-BadgeControlExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BadgeControl/BadgeControl.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -206,7 +190,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BadgeControlExample/Pods-BadgeControlExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BadgeControlExample/Pods-BadgeControlExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -289,6 +273,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -338,6 +323,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -347,12 +333,12 @@
 			baseConfigurationReference = 470987EC86742660EB0D28A0 /* Pods-BadgeControlExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V58W74D958;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BadgeControlExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.kiwisip.BadgeControlExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -362,12 +348,12 @@
 			baseConfigurationReference = 9E9D5E58C1E1C44CB3FDA048 /* Pods-BadgeControlExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V58W74D958;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BadgeControlExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.kiwisip.BadgeControlExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
