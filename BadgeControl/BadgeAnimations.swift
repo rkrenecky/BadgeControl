@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct BadgeAnimations {
-  public typealias BadgeAnimation = ((UIView) -> Void)
+public typealias BadgeAnimation = (UIView) -> Void
 
+public struct BadgeAnimations {
   public static var defaultAnimation: BadgeAnimation = { badgeView in
     badgeView.transform = CGAffineTransform(scaleX: 2.7, y: 2.7)
     UIView.animate(withDuration: 0.5,
@@ -66,5 +66,5 @@ public struct BadgeAnimations {
                    animations: { badgeView.transform = CGAffineTransform.identity },
                    completion: nil)
   }
-}
 
+}

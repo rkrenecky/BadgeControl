@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class BadgeController {
+open class BadgeController {
 
   // MARK: Public properties
 
@@ -20,15 +20,18 @@ public class BadgeController {
   public var borderColor: UIColor
   public var animation: ((UIView) -> Void)?
   public var badgeHeight: Int
+  public var currentBadge: BadgeImageView?
 
   public var animateOnlyWhenBadgeIsNotYetPresent: Bool
 
   // MARK: Private properties
 
-  private unowned var view: UIView
-  private var currentBadge: BadgeImageView? = nil
+  private weak var view: UIView?
   private var counter: Int? = nil
-  private var centerPositionCGPoint: CGPoint { return centerPosition.getCenterPoint(in: view) }
+  private var centerPositionCGPoint: CGPoint? {
+    guard let view = view else { return nil }
+    return centerPosition.centerPoint(in: view)
+  }
 
   // MARK: Initializers
 
@@ -39,7 +42,7 @@ public class BadgeController {
               badgeTextFont: UIFont? = nil,
               borderWidth: CGFloat = 0.0,
               borderColor: UIColor = .black,
-              animation: ((UIView) -> Void)? = BadgeAnimations.defaultAnimation,
+              animation: BadgeAnimation? = BadgeAnimations.defaultAnimation,
               badgeHeight: Int? = nil,
               animateOnlyWhenBadgeIsNotYetPresent: Bool = false) {
 
@@ -73,8 +76,10 @@ public class BadgeController {
       remove(animated: false)
       if animateOnlyWhenBadgeIsNotYetPresent { animated = false }
     }
+
+    guard let centerPositionPoint = centerPositionCGPoint else { return }
     let badgeView = BadgeImageView(height: badgeHeight + Int(borderWidth * 2),
-                                   center: centerPositionCGPoint,
+                                   center: centerPositionPoint,
                                    text: text ?? "",
                                    badgeBackgroundColor: badgeBackgroundColor,
                                    badgeTextColor: badgeTextColor,
@@ -83,7 +88,7 @@ public class BadgeController {
                                    borderColor: borderColor)
     currentBadge = badgeView
     counter = Int(text ?? "")
-    view.addSubview(badgeView)
+    view?.addSubview(badgeView)
     if animated { animation?(badgeView) }
   }
 
@@ -133,11 +138,10 @@ public class BadgeController {
                    animations: {
                     badge.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                     badge.alpha = 0
-
-    },
+                   },
                    completion: { _ in
                     self.remove(animated: false)
-    })
+                   })
   }
-}
 
+}

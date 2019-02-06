@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class BadgeImageView: UIImageView {
+open class BadgeImageView: UIImageView {
 
     // MARK: Private properties
 
@@ -21,14 +21,14 @@ public class BadgeImageView: UIImageView {
 
     // MARK: Initializers
 
-    internal init(height: Int,
-                  center: CGPoint,
-                  text: String,
-                  badgeBackgroundColor: UIColor,
-                  badgeTextColor: UIColor,
-                  badgeTextFont: UIFont,
-                  borderWidth: CGFloat,
-                  borderColor: UIColor) {
+    public init(height: Int,
+                center: CGPoint,
+                text: String,
+                badgeBackgroundColor: UIColor,
+                badgeTextColor: UIColor,
+                badgeTextFont: UIFont,
+                borderWidth: CGFloat,
+                borderColor: UIColor) {
 
         self.text = text
         self.badgeBackgroundColor = badgeBackgroundColor
