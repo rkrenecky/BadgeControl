@@ -63,6 +63,8 @@ badge.borderColor = UIColor.black // black is default
 badge.badgeHeight = 20 // badge will have height of 20px
 ~~~
 
+The changes you will make on your current badge will be reflected once you change badge's text value. To immediately reflect the changes you make on your badge call BadgeController's `redrawBadge()` function.
+
 #### Center position
 You can choose following center positions: upperLeftCorner, upperRightCorner, lowerLeftCorner, lowerRightCorner. 
 
