@@ -12,16 +12,18 @@ open class BadgeImageView: UIImageView {
 
     // MARK: Private properties
 
-    private let text: String
-    private let badgeBackgroundColor: UIColor
-    private let badgeTextColor: UIColor
-    private let badgeTextFont: UIFont
-    private let borderWidth: CGFloat
-    private let borderColor: UIColor
+    internal var height: CGFloat
+    internal var centerPoint: CGPoint
+    internal var text: String
+    internal var badgeBackgroundColor: UIColor
+    internal var badgeTextColor: UIColor
+    internal var badgeTextFont: UIFont
+    internal var borderWidth: CGFloat
+    internal var borderColor: UIColor
 
     // MARK: Initializers
 
-    public init(height: Int,
+    public init(height: CGFloat,
                 center: CGPoint,
                 text: String,
                 badgeBackgroundColor: UIColor,
@@ -30,6 +32,8 @@ open class BadgeImageView: UIImageView {
                 borderWidth: CGFloat,
                 borderColor: UIColor) {
 
+        self.height = height
+        self.centerPoint = center
         self.text = text
         self.badgeBackgroundColor = badgeBackgroundColor
         self.badgeTextColor = badgeTextColor
@@ -37,22 +41,28 @@ open class BadgeImageView: UIImageView {
         self.borderWidth = borderWidth
         self.borderColor = borderColor
 
-        super.init(frame: CGRect.zero)
+        super.init(frame: .zero)
 
-        self.frame = CGRect(x: 0, y: 0, width: calculateWidth(from: Double(height) - Double(borderWidth * 2), and: text), height: height)
-        self.image = drawBadge(frame: self.frame)
-        self.center = center
+        redraw()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Internal methods
+
+    internal func redraw() {
+        frame = CGRect(x: 0, y: 0, width: calculateWidth(from: height - borderWidth * 2, and: text), height: height)
+        image = drawBadge(frame: frame)
+        self.center = centerPoint
+    }
+
     // MARK: Private methods
 
-    private func calculateWidth(from height: Double, and text: String) -> Int {
-        let ratio = text.count > 0 ? text.count : 1
-        return Int(height + (Double(ratio) - 1) * height / 2.4) + Int(borderWidth * 2)
+    private func calculateWidth(from height: CGFloat, and text: String) -> CGFloat {
+        let ratio = CGFloat(text.count > 0 ? text.count : 1)
+        return CGFloat(height + (ratio - 1) * height / 2.4) + borderWidth * 2
     }
 
     private func drawBadge(frame: CGRect = CGRect(x: 0, y: 0, width: 30, height: 30)) -> UIImage {

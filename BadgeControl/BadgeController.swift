@@ -13,14 +13,14 @@ open class BadgeController {
   // MARK: Public properties
 
   public var centerPosition: BadgeCenterPosition
-  public var badgeBackgroundColor: UIColor
-  public var badgeTextColor: UIColor
-  public var badgeTextFont: UIFont
-  public var borderWidth: CGFloat
-  public var borderColor: UIColor
-  public var animation: ((UIView) -> Void)?
-  public var badgeHeight: Int
+  public var badgeBackgroundColor: UIColor { didSet { currentBadge?.badgeBackgroundColor = badgeBackgroundColor } }
+  public var badgeTextColor: UIColor { didSet { currentBadge?.badgeTextColor = badgeTextColor } }
+  public var badgeTextFont: UIFont { didSet { currentBadge?.badgeTextFont = badgeTextFont } }
+  public var borderWidth: CGFloat { didSet { currentBadge?.borderWidth = borderWidth } }
+  public var borderColor: UIColor { didSet { currentBadge?.borderColor = borderColor } }
+  public var badgeHeight: CGFloat { didSet { currentBadge?.height = badgeHeight + borderWidth * 2 } }
   public var currentBadge: BadgeImageView?
+  public var animation: ((UIView) -> Void)?
 
   public var animateOnlyWhenBadgeIsNotYetPresent: Bool
 
@@ -28,6 +28,7 @@ open class BadgeController {
 
   private weak var view: UIView?
   private var counter: Int? = nil
+  private var currentText = "" { didSet { currentBadge?.text = currentText } }
   private var centerPositionCGPoint: CGPoint? {
     guard let view = view else { return nil }
     return centerPosition.centerPoint(in: view)
@@ -43,7 +44,7 @@ open class BadgeController {
               borderWidth: CGFloat = 0.0,
               borderColor: UIColor = .black,
               animation: BadgeAnimation? = BadgeAnimations.defaultAnimation,
-              badgeHeight: Int? = nil,
+              badgeHeight: CGFloat? = nil,
               animateOnlyWhenBadgeIsNotYetPresent: Bool = false) {
 
     self.view = view
@@ -58,7 +59,7 @@ open class BadgeController {
     if let badgeHeight = badgeHeight {
       self.badgeHeight = badgeHeight
     } else {
-      self.badgeHeight = Int(view.frame.height / 1.35)
+      self.badgeHeight = view.frame.height / 1.35
     }
 
     if let badgeTextFont = badgeTextFont {
@@ -71,25 +72,17 @@ open class BadgeController {
   // MARK: Public methods
 
   public func addOrReplaceCurrent(with text: String? = nil, animated: Bool) {
+    currentText = text ?? ""
+    counter = Int(currentText)
+    redrawBadge()
+
     var animated = animated
-    if currentBadge != nil {
-      remove(animated: false)
-      if animateOnlyWhenBadgeIsNotYetPresent { animated = false }
+    if currentBadge != nil && animateOnlyWhenBadgeIsNotYetPresent {
+      animated = false
     }
 
-    guard let centerPositionPoint = centerPositionCGPoint else { return }
-    let badgeView = BadgeImageView(height: badgeHeight + Int(borderWidth * 2),
-                                   center: centerPositionPoint,
-                                   text: text ?? "",
-                                   badgeBackgroundColor: badgeBackgroundColor,
-                                   badgeTextColor: badgeTextColor,
-                                   badgeTextFont: badgeTextFont,
-                                   borderWidth: borderWidth,
-                                   borderColor: borderColor)
-    currentBadge = badgeView
-    counter = Int(text ?? "")
-    view?.addSubview(badgeView)
-    if animated { animation?(badgeView) }
+    guard let currentBadge = currentBadge else { return }
+    if animated { animation?(currentBadge) }
   }
 
   public func remove(animated: Bool) {
@@ -100,6 +93,7 @@ open class BadgeController {
 
     currentBadge?.removeFromSuperview()
     currentBadge = nil
+    currentText = ""
     counter = nil
   }
 
@@ -126,6 +120,26 @@ open class BadgeController {
       } else {
         remove(animated: animated)
       }
+    }
+  }
+
+  public func redrawBadge() {
+    guard let centerPositionPoint = centerPositionCGPoint else { return }
+
+    if let currentBadge = currentBadge {
+      currentBadge.redraw()
+    } else {
+      let badgeView = BadgeImageView(height: badgeHeight + borderWidth * 2,
+                                     center: centerPositionPoint,
+                                     text: currentText,
+                                     badgeBackgroundColor: badgeBackgroundColor,
+                                     badgeTextColor: badgeTextColor,
+                                     badgeTextFont: badgeTextFont,
+                                     borderWidth: borderWidth,
+                                     borderColor: borderColor)
+
+      currentBadge = badgeView
+      view?.addSubview(badgeView)
     }
   }
 
