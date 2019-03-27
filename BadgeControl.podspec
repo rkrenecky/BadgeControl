@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source                 = { :git => "https://github.com/kiwisip/BadgeControl.git", :tag => s.version }
   s.source_files           = "BadgeControl", "BadgeControl/**/*.{h,m,swift}"
   s.exclude_files          = "Classes/Exclude"
-  s.pod_target_xcconfig    = { 'SWIFT_VERSION' => '4.2' }
+  s.pod_target_xcconfig    = { 'SWIFT_VERSION' => '5.0' }
   s.ios.deployment_target  = "9.0"
   s.tvos.deployment_target = "9.0"
   s.frameworks = "UIKit"
