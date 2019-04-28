@@ -12,7 +12,7 @@
     pod 'BadgeControl'
 ~~~
 #### Add source (iOS 9+)
-* Add [BadgeController.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeController.swift), [BadgeImageView.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeImageView.swift), [BadgeCenterPosition.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeCenterPosition.swift) and [BadgeAnimations.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeAnimations.swift) to your project.
+* Add [BadgeController.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeController.swift), [BadgeView.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeView.swift), [BadgeCenterPosition.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeCenterPosition.swift) and [BadgeAnimations.swift](https://github.com/kiwisip/BadgeControl/blob/master/BadgeControl/BadgeAnimations.swift) to your project.
 
 ## Usage
 Add `import BadgeControl` to your source code (unless you used the file setup method). <br><br>
@@ -62,8 +62,6 @@ badge.borderWidth = 3 // in px
 badge.borderColor = UIColor.black // black is default
 badge.badgeHeight = 20 // badge will have height of 20px
 ~~~
-
-The changes you will make on your current badge will be reflected once you change badge's text value. To immediately reflect the changes you make on your badge call BadgeController's `redrawBadge()` function.
 
 #### Center position
 You can choose following center positions: upperLeftCorner, upperRightCorner, lowerLeftCorner, lowerRightCorner. 

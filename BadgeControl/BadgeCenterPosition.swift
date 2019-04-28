@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public enum BadgeCenterPosition {
   case upperLeftCorner
   case upperRightCorner

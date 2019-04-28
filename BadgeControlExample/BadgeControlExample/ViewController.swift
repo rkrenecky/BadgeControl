@@ -20,9 +20,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
   private var lowerRightBadge: BadgeController!
   
   private var badges: [BadgeController] = []
-  
-  var num = 1
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -74,7 +72,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
   }
   
   @IBAction func increment(_ sender: UIButton) {
-    num += 1
     badges.forEach { $0.increment(animated: true) }
   }
   
