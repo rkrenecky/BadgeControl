@@ -31,7 +31,7 @@ badge.addOrReplaceCurrent(animated: true)
 Add a badge with text and present it with animation.
 
 ~~~swift
-badge.addOrReplaceCurrent(with text: "1", animated: true)
+badge.addOrReplaceCurrent(with: "1", animated: true)
 ~~~
 
 Remove badge from its view.
