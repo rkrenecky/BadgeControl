@@ -14,4 +14,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target  = "9.0"
   s.tvos.deployment_target = "9.0"
   s.frameworks = "UIKit"
+  s.swift_version          = "5.0"
 end
