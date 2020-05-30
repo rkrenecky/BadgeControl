@@ -53,8 +53,7 @@ open class BadgeView: UIView {
   public required init?(coder aDecoder: NSCoder) { fatalError("Not supported") }
 
   open override func draw(_ rect: CGRect) {
-    super.draw(rect)
-
+    frame = CGRect(x: 0, y: 0, width: BadgeView.calculateWidth(height: height, borderWidth: borderWidth, text: text), height: height)
     let height = frame.height - borderWidth
     let ovalWidth = height
     let rightHemisphereX = frame.width - borderWidth / 2 - height
@@ -131,7 +130,6 @@ open class BadgeView: UIView {
   }
 
   private func updateUI() {
-    frame = CGRect(x: 0, y: 0, width: BadgeView.calculateWidth(height: height, borderWidth: borderWidth, text: text), height: height)
     setNeedsDisplay()
   }
 
